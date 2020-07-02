@@ -1,9 +1,48 @@
 {% extends 'base.html' %}
 
-{% block title %}
-Home
+{% block head %}
+
+<style type="text/css">
+	
+	h1{
+		margin: 10% 10% 10% 10%;
+	}
+	.card{
+		margin-bottom: 5%;
+		width: 80%;
+	}
+	.read-more{
+		float:right;
+		margin-right: 20px;
+	}
+
+
+
+</style>
+
 {% endblock %}
 
-{%block body %}
-This is a test for header and footer
+
+{% block body %}
+<div class = "container">
+	<div>
+		<h1>
+			My Personal Diary
+		</h1>
+	</div>
+	{% for diary in diary %}
+	<div>
+		<div class="card">
+		  <div class="card-header">
+		    Featured
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title">{{diary.title}}</h5>
+		    <p class="card-text">{{diary.content}}</p>
+		    <a href="#" class="btn btn-primary read-more">Read More</a>
+		  </div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
 {% endblock %}
