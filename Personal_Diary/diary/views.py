@@ -11,3 +11,7 @@ def new(request):
 
 def about(request):
   return render(request,'about.html')
+
+def view(request,d_id):
+	diary = Diary.objects.get(id = d_id)
+	return render(request,'show.html',{'diary':diary})
