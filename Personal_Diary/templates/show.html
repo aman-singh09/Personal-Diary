@@ -14,6 +14,9 @@ body{
   background-color: #111845;
 }
 
+.title{
+	text-decoration: underline;
+}
 .background-img{
   background-image: url("https://3.bp.blogspot.com/-piZWCW2uUbg/W2fPXxkWZgI/AAAAAAAAOu0/eydmMjTIqcwLMHEEr2H7imqoRTxMw4o9QCLcBGAs/s1600/among_trees_night_dribbble.png");
 height: 400px;
@@ -36,15 +39,26 @@ height: 400px;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 300px;
-  height: 80%;
+  height: 99%;
   background: #111845a6;
   box-sizing: border-box;
   overflow-y: scroll;
   overflow-x: hidden;
+  color: white;
+}
+
+.box-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 80%;
+  background: #111845a6;
+  box-sizing: border-box;
   box-shadow: 0 20px 50px rgb(23, 32, 90);
   border: 2px solid #2a3cad;
   color: white;
-  padding: 20px;
 }
 
 .content:before{
@@ -70,13 +84,81 @@ height: 400px;
   top:15px;
   left:15px;
   right:15px;
-  /*bottom:15px;*/
+  margin-bottom: 15px;
   border:1px solid #f0a591;
   padding:20px;
   text-align:center;
   box-shadow: 0 5px 10px rgba(9,0,0,0.5);
  
  
+} 
+
+.box-container span{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  box-sizing: border-box;
+  
+}
+
+.box-container span:nth-child(1)
+{
+  transform:rotate(0deg);
+}
+
+.box-container span:nth-child(2)
+{
+  transform:rotate(90deg);
+}
+
+.box-container span:nth-child(3)
+{
+  transform:rotate(180deg);
+}
+
+.box-container span:nth-child(4)
+{
+  transform:rotate(270deg);
+}
+
+.box-container span:before
+{
+  content: '';
+  position: absolute;
+  width:100%;
+  height: 2px;
+  background: #50dfdb;
+  animation: animate 4s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+  transform:scaleX(0);
+  transform-origin: left;
+  }
+  50%
+  {
+    transform:scaleX(1);
+  transform-origin: left;
+  }
+  50.1%
+  {
+    transform:scaleX(1);
+  transform-origin: right;
+    
+  }
+  
+  100%
+  {
+    transform:scaleX(0);
+  transform-origin: right;
+    
+  }
+  
+  
 } 
 
 
@@ -108,11 +190,17 @@ background:rgb(54, 56, 58);
 <section>
   <div class="container">
     <div class="background-img">
-      <div class="box">
-        <div class="content">
-          <h2>{{diary.title}} </h2>
-          <p>{{diary.content}}</p>
-        </div>
+      <div class="box-container">
+      	<span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class = "box">
+	        <div class="content">
+	          <h2 class = "title"><strong><em>{{diary.title}}</em></strong> </h2>
+	          <p>{{diary.content}}</p>
+	        </div>
+	      </div>
       </div>
     </div>
   </div>
