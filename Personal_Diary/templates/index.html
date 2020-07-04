@@ -5,8 +5,18 @@
 
 <style type="text/css">
 	
+	img{
+		width : 100px;
+		height : 100px;
+		float :left;
+	}
+	
+	.heading{
+		margin: 5% 10% 8% 0;
+	}
 	h1{
-		margin: 10% 10% 10% 10%;
+		padding-top: 20px;
+		padding-left: 110px;
 	}
 	.card{
 		margin-bottom: 5%;
@@ -15,6 +25,7 @@
 	.read-more{
 		float:right;
 		margin-right: 20px;
+		margin-bottom: 20px;
 	}
 
 
@@ -26,8 +37,9 @@
 
 {% block body %}
 <div class = "container">
-	<div>
-		<h1>
+	<div class = "heading">
+		<img src = "https://image.freepik.com/free-vector/diary-seamless-pattern_1284-12819.jpg?1">
+		<h1 class = "vertical-center">
 			My Personal Diary
 		</h1>
 	</div>
@@ -35,7 +47,7 @@
 	<div>
 		<div class="card">
 		  <div class="card-header">
-		    Featured
+		    {{diary.date}}
 		  </div>
 		  <div class="card-body">
 		    <h5 class="card-title">{{diary.title}}</h5>
