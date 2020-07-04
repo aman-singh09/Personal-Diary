@@ -4,6 +4,9 @@ from .models import Diary
 # Create your views here.
 def index(request):
 	diary = Diary.objects.all()
+	for d in diary:
+		d.content = d.content[0:200]
+		d.content+="...";
 	return render(request,'index.html',{'diary':diary})
 
 def new(request):
