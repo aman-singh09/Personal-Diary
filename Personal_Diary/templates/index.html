@@ -12,7 +12,12 @@
 	}
 	
 	.heading{
-		margin: 5% 10% 8% 0;
+		padding: 5% 10% 8% 10%;
+		width: cover;
+		background: #2980B9;  /* fallback for old browsers */
+		background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 	}
 	h1{
 		padding-top: 20px;
@@ -36,13 +41,13 @@
 
 
 {% block body %}
+<div class = "heading">
+	<img src = "https://image.freepik.com/free-vector/diary-seamless-pattern_1284-12819.jpg?1">
+	<h1 class = "vertical-center">
+		My Personal Diary
+	</h1>
+</div>
 <div class = "container">
-	<div class = "heading">
-		<img src = "https://image.freepik.com/free-vector/diary-seamless-pattern_1284-12819.jpg?1">
-		<h1 class = "vertical-center">
-			My Personal Diary
-		</h1>
-	</div>
 	{% for diary in diary %}
 	<div>
 		<div class="card">
