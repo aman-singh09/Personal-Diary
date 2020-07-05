@@ -3,6 +3,21 @@
 {%block title %} Home {%endblock title %}
 {% block head %}
 
+<script type="text/javascript">
+	fn = () => {
+		let ele = document.getElementsByClassName('card-body');
+		for(let i=0;i<ele.length;i++){
+			ele[i].style.backgroundColor='white';
+		}
+	
+	}
+</script>
+
+
+
+
+
+
 <style type="text/css">
 	
 	img{
@@ -32,6 +47,10 @@
 	.diary-card .card-header{
 		border-radius:40px 40px 0 0;
 	}
+	.card-body{
+		border-radius : 0 0 40px 40px;	
+		background-color:white;		
+	}
 	.read-more{
 		float:right;
 		margin-right: 20px;
@@ -41,6 +60,7 @@
 
 
 </style>
+
 
 {% endblock %}
 
@@ -60,14 +80,28 @@
 		<div class="card">
 		  <div class="card-header">
 		    {{diary.date}}
+		    {{diary.mood}}
 		  </div>
-		  <div class="card-body">
+		  <div style = "background-color:
+		  	{% ifequal diary.mood 'happy' %}
+		  	{{'green'}}
+		  	{% endifequal %}
+
+		  	{% ifequal diary.mood 'sad' %}
+		  	{{'red'}}
+		  	{% endifequal %}
+
+		  	;" class="card-body">
 		    <h5 class="card-title">{{diary.title}}</h5>
 		    <p class="card-text">{{diary.content}}</p>
 		    <a href="/show/{{diary.id}}" class="btn btn-primary read-more">Read More</a>
 		  </div>
 		</div>
 	</div>
+	<!-- <button id="test" onclick="fn();">click</button> -->
 	{% endfor %}
+
 </div>
+
+
 {% endblock %}
