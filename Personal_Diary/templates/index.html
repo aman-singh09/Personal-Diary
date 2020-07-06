@@ -3,19 +3,6 @@
 {%block title %} Home {%endblock title %}
 {% block head %}
 
-<script type="text/javascript">
-	fn = () => {
-		let ele = document.getElementsByClassName('card-body');
-		for(let i=0;i<ele.length;i++){
-			ele[i].style.backgroundColor='white';
-		}
-	
-	}
-</script>
-
-
-
-
 
 
 <style type="text/css">
@@ -25,12 +12,17 @@
 		height : 100px;
 		float :left;
 	}
-	
-	.container-fluid{
+	#index{
 		background: #2980B9;  /* fallback for old browsers */
 		background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
 		background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	}
+	.container-fluid{
+		background: #ECE9E6;  /* fallback for old browsers */
+		background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+		border-bottom: 2px solid black;
 	}
 	h1{
 		padding-top: 20px;
@@ -66,42 +58,50 @@
 
 
 {% block body %}
-<div class = "container-fluid pb-5">
-	<div class = "heading pl-3">
-		<img class = "mt-2" src = "https://image.freepik.com/free-vector/diary-seamless-pattern_1284-12819.jpg?1">
-		<h1 class = "vertical-center">
-			My Personal Diary
-		</h1>
-	</div>
-</div>
-<div class = "container my-5">
-	{% for diary in diary %}
-	<div class = "diary-card">
-		<div class="card">
-		  <div class="card-header">
-		    {{diary.date}}
-		    {{diary.mood}}
-		  </div>
-		  <div style = "background-color:
-		  	{% ifequal diary.mood 'happy' %}
-		  	{{'green'}}
-		  	{% endifequal %}
-
-		  	{% ifequal diary.mood 'sad' %}
-		  	{{'red'}}
-		  	{% endifequal %}
-
-		  	;" class="card-body">
-		    <h5 class="card-title">{{diary.title}}</h5>
-		    <p class="card-text">{{diary.content}}</p>
-		    <a href="/show/{{diary.id}}" class="btn btn-primary read-more">Read More</a>
-		  </div>
+<div id = "index" class = "pb-3">
+	<div class = "container-fluid pb-5">
+		<div class = "heading pl-3">
+			<img class = "mt-2" src = "https://image.freepik.com/free-vector/diary-seamless-pattern_1284-12819.jpg?1">
+			<h1 class = "vertical-center">
+				My Personal Diary
+			</h1>
 		</div>
 	</div>
-	<!-- <button id="test" onclick="fn();">click</button> -->
-	{% endfor %}
+	<div class = "container my-5">
+		{% for diary in diary %}
+		<div class = "diary-card">
+			<div class="card">
+			  <div class="card-header">
+			    {{diary.date}}
+			  </div>
+			  <div style = "
+			  	{% ifequal diary.mood 'happy' %}
+			  	background: #11998e;  /* fallback for old browsers */
+					background: -webkit-linear-gradient(to right, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
+					background: linear-gradient(to right, #38ef7d, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+					
 
+			  	{% endifequal %}
+
+			  	{% ifequal diary.mood 'sad' %}
+			  	background: #3E5151;  /* fallback for old browsers */
+					background: -webkit-linear-gradient(to right, #DECBA4, #3E5151);  /* Chrome 10-25, Safari 5.1-6 */
+					background: linear-gradient(to right, #DECBA4, #3E5151); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+					
+					color:white;
+			  	{% endifequal %}
+
+			  	;" class="card-body">
+			    <h5 class="card-title">{{diary.title}}</h5>
+			    <p class="card-text">{{diary.content}}</p>
+			    <a href="/show/{{diary.id}}" class="btn btn-primary read-more">Read More</a>
+			  </div>
+			</div>
+		</div>
+		<!-- <button id="test" onclick="fn();">click</button> -->
+		{% endfor %}
+
+	</div>
 </div>
-
 
 {% endblock %}
