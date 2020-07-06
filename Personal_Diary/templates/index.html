@@ -3,19 +3,6 @@
 {%block title %} Home {%endblock title %}
 {% block head %}
 
-<script type="text/javascript">
-	fn = () => {
-		let ele = document.getElementsByClassName('card-body');
-		for(let i=0;i<ele.length;i++){
-			ele[i].style.backgroundColor='white';
-		}
-	
-	}
-</script>
-
-
-
-
 
 
 <style type="text/css">
@@ -80,15 +67,22 @@
 		<div class="card">
 		  <div class="card-header">
 		    {{diary.date}}
-		    {{diary.mood}}
 		  </div>
-		  <div style = "background-color:
+		  <div style = "
 		  	{% ifequal diary.mood 'happy' %}
-		  	{{'green'}}
+		  	background: #11998e;  /* fallback for old browsers */
+				background: -webkit-linear-gradient(to right, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
+				background: linear-gradient(to right, #38ef7d, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+				
+
 		  	{% endifequal %}
 
 		  	{% ifequal diary.mood 'sad' %}
-		  	{{'red'}}
+		  	background: #3E5151;  /* fallback for old browsers */
+				background: -webkit-linear-gradient(to right, #DECBA4, #3E5151);  /* Chrome 10-25, Safari 5.1-6 */
+				background: linear-gradient(to right, #DECBA4, #3E5151); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+				
+				color:white;
 		  	{% endifequal %}
 
 		  	;" class="card-body">
