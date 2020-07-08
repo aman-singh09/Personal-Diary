@@ -21,22 +21,24 @@ def view(request,d_id):
 	diary = Diary.objects.get(id = d_id)
 	return render(request,'show.html',{'diary':diary})
 
-def login(request):
+def signin(request):
 	if request.method == 'POST':
 		username = request.POST.get('username')
 		password = request.POST.get('password')
 
 		user= authenticate(username=username, password= password)
 		if user is not None:
-			login(user,request)
-			return redirect("/")
+			login(request,user)
+			return redirect("home")
 		else:
-			return render(request,'/login')
+			return redirect('login')
 
 	return render(request,'credentials.html')
 
-# def logout(request):
-# 	return render()
+def signout(request):
+	logout(request)
+	return redirect("login")
+
 def registration(request):
 	if request.method == 'POST':
 		first_name=request.POST['first_name']
