@@ -74,24 +74,22 @@
 			  <div class="card-header">
 			    {{diary.date}}
 			  </div>
-			  <div style = "
-			  	{% ifequal diary.mood 'happy' %}
+			  <div style="
+					/* {% ifequal diary.mood 'happy' %} */
 			  	background: #11998e;  /* fallback for old browsers */
 					background: -webkit-linear-gradient(to right, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
 					background: linear-gradient(to right, #38ef7d, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-					
+			  	/* {% endifequal %} */
 
-			  	{% endifequal %}
-
-			  	{% ifequal diary.mood 'sad' %}
+			  	/* {% ifequal diary.mood 'sad' %} */
 			  	background: #3E5151;  /* fallback for old browsers */
 					background: -webkit-linear-gradient(to right, #DECBA4, #3E5151);  /* Chrome 10-25, Safari 5.1-6 */
 					background: linear-gradient(to right, #DECBA4, #3E5151); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 					
 					color:white;
-			  	{% endifequal %}
+			  	/* {% endifequal %} */
 
-			  	;" class="card-body">
+					"class="card-body">
 			    <h5 class="card-title">{{diary.title}}</h5>
 			    <p class="card-text">{{diary.content}}</p>
 			    <a href="/show/{{diary.id}}" class="btn btn-primary read-more">Read More</a>
