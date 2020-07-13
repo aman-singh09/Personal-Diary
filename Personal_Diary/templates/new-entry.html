@@ -1,9 +1,50 @@
 {% extends 'base.html' %}
 
 {% block title %}
-New
+Write your thoughts
+{% endblock %}
+
+{% block head %}
+<style type="text/css">
+	
+	.heading{
+		padding: 5% 20% 5% 25%;
+		box-shadow: initial;
+		color: green;
+	}
+	.content{
+		margin-left: 10%;
+		width:70%;
+	}
+	.title{
+		width:80%;
+	}
+
+
+
+
+</style>
 {% endblock %}
 
 {%block body %}
-New entry made here !!
+
+<div class = "container mb-5">
+	<div class = " heading">
+		<h1>
+			How was your day today?
+		</h1>
+	</div>
+	<div class = "content">
+		<form>
+			<div class = "title form-group">
+				<label> A one liner to describe today </label>
+					<input class = "form-control" type="text" name="title" />
+			</div>
+			<div class = "content-body form-group">
+				<label><div> Tell me everything that happened today </div></label>
+					<textarea style="height:300px;" class = "form-control" name = "content" required></textarea>		
+			</div>
+		</form>
+	</div>
+</div>
 {% endblock %}
