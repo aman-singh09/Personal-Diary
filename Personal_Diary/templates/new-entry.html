@@ -7,6 +7,10 @@ Write your thoughts
 {% block head %}
 <style type="text/css">
 	
+	.wrapper{
+		/*border:2px solid red;*/
+		box-shadow: 10px 10px 8px 10px #888888;		
+	}
 	.heading{
 		padding: 5% 20% 5% 25%;
 		box-shadow: initial;
@@ -68,36 +72,39 @@ Write your thoughts
 
 {%block body %}
 
-<div class = "container mb-5">
-	<div class = " heading">
-		<h1>
-			How was your day today?
-		</h1>
-	</div>
-	<div class = "content">
-		<form>
-			<div class = "title row">
-				<div class = "col-md-8 col-sm-8 form-group">
-					<label> A one liner to describe today </label>
-						<input class = "form-control" type="text" name="title" required />
+<div class = "row container mt-5 mb-5">
+	<div class = "col-md-2 col-sm-1"></div>
+	<div class = "wrapper col-md-9 col-sm-10 ml-4 pb-5">
+		<div class = " heading">
+			<h1>
+				How was your day today?
+			</h1>
+		</div>
+		<div class = "content">
+			<form>
+				<div class = "title row">
+					<div class = "col-md-8 col-sm-8 form-group">
+						<label> A one liner to describe today </label>
+							<input class = "form-control" type="text" name="title" required />
+					</div>
+					<div class = " col-md-4 col-sm-4 mood px-0">
+						<div><label>How are you feeling today</label></div>
+						<select name = "mood">
+							<option style = "background: #11998e;"
+							 class = "happy" value = "happy">Happy</option> 
+							<option style = "background: #3E5151;" class = "sad" value = "sad">Sad</option>
+						</select>
+					</div>
+				</div>	
+				<div class = "content-body form-group">
+					<label><div> Tell me everything that happened today </div></label>
+						<textarea style="height:300px;" class = "form-control" name = "content" required></textarea>		
 				</div>
-				<div class = " col-md-4 col-sm-4 mood px-0">
-					<div><label>How are you feeling today</label></div>
-					<select name = "mood">
-						<option style = "background: #11998e;"
-						 class = "happy" value = "happy">Happy</option> 
-						<option style = "background: #3E5151;" class = "sad" value = "sad">Sad</option>
-					</select>
+				<div class = "submit">
+					<input class = "submit btn btn-large" type="submit" value = "Submit" name="submit">
 				</div>
-			</div>	
-			<div class = "content-body form-group">
-				<label><div> Tell me everything that happened today </div></label>
-					<textarea style="height:300px;" class = "form-control" name = "content" required></textarea>		
-			</div>
-			<div class = "submit">
-				<input class = "submit btn btn-large" type="submit" value = "Submit" name="submit">
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
 </div>
 
