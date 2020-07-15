@@ -45,7 +45,19 @@ Write your thoughts
 		background: linear-gradient(to right, #DECBA4, #3E5151);
 		color:white;
 	}
+	input.submit{
+	background: #6a3093;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #a044ff, #6a3093);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #a044ff, #6a3093); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+	color:white;
+	float:right;
+	width: 100%;
+	}
+	div.submit{
+		padding-top: 10px;
+		padding-bottom: 20px;
+	}
 
 
 
@@ -67,7 +79,7 @@ Write your thoughts
 			<div class = "title row">
 				<div class = "col-md-8 col-sm-8 form-group">
 					<label> A one liner to describe today </label>
-						<input class = "form-control" type="text" name="title" />
+						<input class = "form-control" type="text" name="title" required />
 				</div>
 				<div class = " col-md-4 col-sm-4 mood px-0">
 					<div><label>How are you feeling today</label></div>
@@ -82,9 +94,13 @@ Write your thoughts
 				<label><div> Tell me everything that happened today </div></label>
 					<textarea style="height:300px;" class = "form-control" name = "content" required></textarea>		
 			</div>
+			<div class = "submit">
+				<input class = "submit btn btn-large" type="submit" value = "Submit" name="submit">
+			</div>
 		</form>
 	</div>
 </div>
+
 <script type="text/javascript">
 	$("select").change(function(){
     var color = $("option:selected", this).attr("class");
