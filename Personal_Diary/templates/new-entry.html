@@ -17,8 +17,36 @@ Write your thoughts
 		width:70%;
 	}
 	.title{
-		width:80%;
+		padding-top:5%;
+		padding-bottom: 5%;
 	}
+	.mood{
+		text-align:center;
+		width:max-content;]
+	}
+	select{
+		background: #11998e;  
+		background: -webkit-linear-gradient(to right, #38ef7d, #11998e); 
+		background: linear-gradient(to right, #38ef7d, #11998e);
+		width: 100px;
+		height: 30px;
+		font-size: 18px;
+		border:none;
+	}
+	.happy{
+		background: #11998e;  
+		background: -webkit-linear-gradient(to right, #38ef7d, #11998e); 
+		background: linear-gradient(to right, #38ef7d, #11998e);
+		color:black;
+	}
+	.sad{
+		background: #3E5151; 
+		background: -webkit-linear-gradient(to right, #DECBA4, #3E5151); 
+		background: linear-gradient(to right, #DECBA4, #3E5151);
+		color:white;
+	}
+
+
 
 
 
@@ -36,10 +64,20 @@ Write your thoughts
 	</div>
 	<div class = "content">
 		<form>
-			<div class = "title form-group">
-				<label> A one liner to describe today </label>
-					<input class = "form-control" type="text" name="title" />
-			</div>
+			<div class = "title row">
+				<div class = "col-md-8 col-sm-8 form-group">
+					<label> A one liner to describe today </label>
+						<input class = "form-control" type="text" name="title" />
+				</div>
+				<div class = " col-md-4 col-sm-4 mood px-0">
+					<div><label>How are you feeling today</label></div>
+					<select name = "mood">
+						<option style = "background: #11998e;"
+						 class = "happy" value = "happy">Happy</option> 
+						<option style = "background: #3E5151;" class = "sad" value = "sad">Sad</option>
+					</select>
+				</div>
+			</div>	
 			<div class = "content-body form-group">
 				<label><div> Tell me everything that happened today </div></label>
 					<textarea style="height:300px;" class = "form-control" name = "content" required></textarea>		
@@ -47,4 +85,10 @@ Write your thoughts
 		</form>
 	</div>
 </div>
+<script type="text/javascript">
+	$("select").change(function(){
+    var color = $("option:selected", this).attr("class");
+    $("select").attr("class", color);
+});
+</script>
 {% endblock %}
