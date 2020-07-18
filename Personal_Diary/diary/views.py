@@ -4,6 +4,10 @@ from django.contrib.auth.models import User,auth
 from django.contrib.auth import logout,authenticate,login
 
 # Create your views here.
+
+def homepage(request):
+	return render(request, 'home-page.html')
+
 def index(request):
 	diary = Diary.objects.all()
 	for d in diary:
