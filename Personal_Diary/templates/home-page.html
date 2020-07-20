@@ -8,7 +8,10 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
 <style type="text/css">
-
+ *{
+ 	margin:0;
+ 	padding:0;
+ }
 	body{
 		background-color: #000;
 	}
@@ -28,7 +31,23 @@
 	#landing-header h1{
 		color: #000;
 		font-size: 5vh;
+		animation-name: heading;
+		animation-duration: 2s;
+		animation-delay: 2s;
+		top:-500px;
+		opacity:0;
+		animation-fill-mode: forwards;
 	}
+	@keyframes heading{
+		0%{
+			opacity:0;
+		}
+		100%{
+			opacity:1;
+		}
+	}
+
+
 	#landing-header h3{
 		color:#222222;
 		font-size: 3vh;
@@ -84,6 +103,11 @@
 	.sign-btn{
 		margin:10px 10px 10px 10px;
 		font-size: 2.5vh;
+		animation-name: heading;
+		animation-duration: 2s;
+		animation-delay: 3s;
+		animation-fill-mode: forwards;
+		opacity:0;
 	}
 
 	@keyframes imageAnimation { 
@@ -116,7 +140,7 @@
 	 		<h1>Your Personal Diary</h1>
 	 		<h3>We provide you your very own personal space</h3>
 	 		<a class = "btn btn-success btn-lg sign-btn" href="/register">Sign Up</a>
-	 		<a class = "btn btn-primary btn-lg sign-btn" href="/register">Sign In</a>
+	 		<a class = "btn btn-primary btn-lg sign-btn" href="/login">Sign In</a>
     </div>
     
     <ul class="slideshow">
