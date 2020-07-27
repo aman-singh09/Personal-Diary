@@ -7,16 +7,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <title>Sign Up</title>
-    <style type="text/css">
-      div{
-        margin-bottom: 20px;
-      }
-    </style>
   <body>
    <br><br>
     <div class="container">
       <form name="myform" class="form-group" action="/register/" method="POST">
-        {% csrf_token%}
+        {% csrf_token %}
         <h2 style="text-align: center; font-weight: bold;font-size: 45px;">Register For New Account</h1>
         <div class="row jumbotron jumbotron-fluid">
           <div class="col-md-6">
@@ -43,9 +38,7 @@
             <label for="password">Confirm Password</label>
             <input type="password" class="form-control" name='password2' placeholder="Confirm Password" autocomplete="off"><br>
           </div>
-          <div class="col-md-12" >
-            <button class="btn btn-primary" style="text-align: center;align-self:center ;" type="submit">Register</button>
-          </div>
+          <button class="btn btn-primary" style="text-align: center;align-self:center ;" type="submit">Register</button>
         </div>
       </form>
     </div>

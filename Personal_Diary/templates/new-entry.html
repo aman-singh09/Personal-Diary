@@ -26,7 +26,7 @@ Write your thoughts
 	}
 	.mood{
 		text-align:center;
-		width:max-content;]
+		width:max-content;
 	}
 	select{
 		background: #11998e;  
@@ -81,7 +81,8 @@ Write your thoughts
 			</h1>
 		</div>
 		<div class = "content">
-			<form>
+			<form name="myform" class="form-group" action="/new/" method="POST">
+				{% csrf_token %}
 				<div class = "title row">
 					<div class = "col-md-8 col-sm-8 form-group">
 						<label> A one liner to describe today </label>
@@ -91,8 +92,8 @@ Write your thoughts
 						<div><label>How are you feeling today</label></div>
 						<select name = "mood">
 							<option style = "background: #11998e;"
-							 class = "happy" value = "happy">Happy</option> 
-							<option style = "background: #3E5151;" class = "sad" value = "sad">Sad</option>
+							 class = "happy" name="happy" value = "happy">Happy</option> 
+							<option style = "background: #3E5151;" class = "sad" name="sad" value = "sad">Sad</option>
 						</select>
 					</div>
 				</div>	

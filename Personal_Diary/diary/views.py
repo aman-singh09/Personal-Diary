@@ -16,7 +16,13 @@ def index(request):
 	return render(request,'index.html',{'diary':diary})
 
 def new(request):
-  return render(request,'new-entry.html')
+	if request.method == 'POST':	
+		title=request.POST['title']
+		content=request.POST['content']
+		mood=request.POST['mood']
+		details= Diary(title=title,content=content,mood=mood)
+		details.save()
+	return render(request,'new-entry.html')
 
 def about(request):
   return render(request,'about.html')
