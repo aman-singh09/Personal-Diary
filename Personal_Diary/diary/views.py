@@ -2,33 +2,41 @@ from django.shortcuts import render,HttpResponse,redirect
 from .models import Diary
 from django.contrib.auth.models import User,auth 
 from django.contrib.auth import logout,authenticate,login
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 def homepage(request):
 	return render(request, 'home-page.html')
 
+@login_required
 def index(request):
-	diary = Diary.objects.all()
+	diary = Diary.objects.filter(user=request.user)
 	for d in diary:
 		d.content = d.content[0:200]
 		d.content+="...";
 	return render(request,'index.html',{'diary':diary})
 
+@login_required
 def new(request):
-	if request.method == 'POST':	
+	if request.method == 'POST':
+		user = request.user	
 		title=request.POST['title']
 		content=request.POST['content']
 		mood=request.POST['mood']
-		details= Diary(title=title,content=content,mood=mood)
+		details= Diary(user=user,title=title,content=content,mood=mood)
 		details.save()
 	return render(request,'new-entry.html')
 
 def about(request):
   return render(request,'about.html')
 
+@login_required
 def view(request,d_id):
-	diary = Diary.objects.get(id = d_id)
+	try:
+		diary = Diary.objects.get(user=request.user,id = d_id)
+	except:
+		return redirect('home')
 	return render(request,'show.html',{'diary':diary})
 
 def signin(request):
@@ -47,7 +55,7 @@ def signin(request):
 
 def signout(request):
 	logout(request)
-	return redirect("login")
+	return redirect("home")
 
 def registration(request):
 	if request.method == 'POST':
