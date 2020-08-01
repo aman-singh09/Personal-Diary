@@ -2,12 +2,14 @@ from django.shortcuts import render,HttpResponse,redirect
 from .models import Diary
 from django.contrib.auth.models import User,auth 
 from django.contrib.auth import logout,authenticate,login
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 def homepage(request):
 	return render(request, 'home-page.html')
 
+@login_required
 def index(request):
 	diary = Diary.objects.filter(user=request.user)
 	for d in diary:
@@ -15,6 +17,7 @@ def index(request):
 		d.content+="...";
 	return render(request,'index.html',{'diary':diary})
 
+@login_required
 def new(request):
 	if request.method == 'POST':
 		user = request.user	
@@ -28,6 +31,7 @@ def new(request):
 def about(request):
   return render(request,'about.html')
 
+@login_required
 def view(request,d_id):
 	try:
 		diary = Diary.objects.get(user=request.user,id = d_id)
@@ -51,7 +55,7 @@ def signin(request):
 
 def signout(request):
 	logout(request)
-	return redirect("login")
+	return redirect("home")
 
 def registration(request):
 	if request.method == 'POST':
