@@ -9,18 +9,19 @@ def homepage(request):
 	return render(request, 'home-page.html')
 
 def index(request):
-	diary = Diary.objects.all()
+	diary = Diary.objects.filter(user=request.user)
 	for d in diary:
 		d.content = d.content[0:200]
 		d.content+="...";
 	return render(request,'index.html',{'diary':diary})
 
 def new(request):
-	if request.method == 'POST':	
+	if request.method == 'POST':
+		user = request.user	
 		title=request.POST['title']
 		content=request.POST['content']
 		mood=request.POST['mood']
-		details= Diary(title=title,content=content,mood=mood)
+		details= Diary(user=user,title=title,content=content,mood=mood)
 		details.save()
 	return render(request,'new-entry.html')
 
@@ -28,7 +29,10 @@ def about(request):
   return render(request,'about.html')
 
 def view(request,d_id):
-	diary = Diary.objects.get(id = d_id)
+	try:
+		diary = Diary.objects.get(user=request.user,id = d_id)
+	except:
+		return redirect('home')
 	return render(request,'show.html',{'diary':diary})
 
 def signin(request):
